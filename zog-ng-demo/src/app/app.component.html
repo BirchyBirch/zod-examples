@@ -1,0 +1,23 @@
+<h1>Fun with Zod!</h1>
+
+<section>
+ <h2>TS works fine at design time, preventing common errors</h2> 
+  <div *ngIf="this.svc.forecast$ |async as forecast">
+      <div> json: {{JSON.stringify(forecast)}}</div>
+      <div>Typescript will prevent writing this: <pre>age: forecast.age</pre></div>
+  </div>
+<section>
+<h2>
+  Without Validation, Typescript doesnt exist at runtime!
+</h2>
+<div>
+  Even though this is mapped to the wrong model, the endpoint still returns a 200, and returns the weatherforecast model.  This is then "null" 
+</div>
+<div *ngIf="this.svc.incorrectData$|async as resultData">
+  <div> json: {{JSON.stringify(resultData)}}</div>
+  <hr>
+  <div> age: {{resultData.age}} </div>
+  <hr>
+  <div> name: {{resultData.name}}</div>
+</div>
+</section>
